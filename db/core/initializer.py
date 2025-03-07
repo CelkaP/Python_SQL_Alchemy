@@ -3,7 +3,7 @@ from conf.settings.base import DATABASE
 
 # Create database engine
 engine = create_engine(
-    "mysql+mysqldb://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}".format(
+    "mysql+pymysql://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}?charset=utf8mb4".format(
         db_username=DATABASE['USERNAME'],
         db_password=DATABASE['PASSWORD'],
         db_host=DATABASE['HOST'],
@@ -14,4 +14,5 @@ engine = create_engine(
 )
 
 def create_connection():
+    print("Connecting to a database.")
     return engine.connect()
