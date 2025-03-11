@@ -10,7 +10,7 @@ engine = create_engine(
         db_port=DATABASE['PORT'],
         db_name=DATABASE['NAME']
     ),
-    echo=True,
+    echo=True
 )
 
 def create_connection():
