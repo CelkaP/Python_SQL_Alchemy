@@ -1,5 +1,6 @@
 import csv
 
+
 class CSVExporter:
     """Class to handle writing data from SQLAlchemy to a CSV file."""
 
@@ -17,7 +18,7 @@ class CSVExporter:
         headers = items[0].keys()
 
         try:
-            with open(file_name, mode='w', newline='', encoding='utf-8') as file:
+            with open(file_name, mode="w", newline="", encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=headers)
                 writer.writeheader()
                 writer.writerows(items)

@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # Create a session factory
 Session = sessionmaker(bind=engine)
 
+
 def show_all_tables():
     """
     Show all available tables in the database.

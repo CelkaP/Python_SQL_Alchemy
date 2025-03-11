@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # Create a session factory
 Session = sessionmaker(bind=engine)
 
+
 class DQL:
     """Encapsulates database query language (DML)"""
 
@@ -24,4 +25,11 @@ class DQL:
         """
         with Session() as session:
             items = session.query(TestData).all()
-            return [{key: value for key, value in item.__dict__.items() if key != "_sa_instance_state"} for item in items]
+            return [
+                {
+                    key: value
+                    for key, value in item.__dict__.items()
+                    if key != "_sa_instance_state"
+                }
+                for item in items
+            ]

@@ -6,11 +6,12 @@ from sqlalchemy.orm import sessionmaker
 # Create a session factory
 Session = sessionmaker(bind=engine)
 
+
 class DML:
     """Encapsulates database manipulation language (DML)"""
 
     @staticmethod
-    def add_item(date:datetime, title:str, author:str):
+    def add_item(date: datetime, title: str, author: str):
         """Adds a single item to Item table"""
         with Session() as session:
             try:
@@ -33,10 +34,10 @@ class DML:
                 print(f"Error occurred while adding items: {e}")
 
     @staticmethod
-    def remove_item(item_id:int):
+    def remove_item(item_id: int):
         with Session() as session:
             try:
-                item = session.query(TestData).filter_by(id = item_id).first()
+                item = session.query(TestData).filter_by(id=item_id).first()
                 if item:
                     session.delete(item)
                     session.commit()
@@ -45,4 +46,6 @@ class DML:
                     print(f"Item with id {item_id} not found.")
             except Exception as e:
                 session.rollback()
-                print(f"Error occurred while trying to delete item with id: {item_id}. \nMessage: {e}")
+                print(
+                    f"Error occurred while trying to delete item with id: {item_id}. \nMessage: {e}"
+                )
